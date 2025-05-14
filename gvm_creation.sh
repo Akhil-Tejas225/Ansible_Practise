@@ -1,4 +1,4 @@
-gcloud compute instances create mygcp2 \
+gcloud compute instances create mygcp3 \
            --zone=us-central1-a \
            --image-family=ubuntu-2204-lts \
            --image-project=ubuntu-os-cloud \
