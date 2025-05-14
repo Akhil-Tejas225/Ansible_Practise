@@ -8,7 +8,12 @@
        name: openjdk-17-jdk
        state: present
        update_cache: yes
-    - name: install_open_jdk
+    - name: create_group_tomcat
+      ansible.builtin.group:
+       name: tomcat
+       state: present
+       
+    - name: add_user_tomcat
       ansible.builtin.user:
        name: tomcat
        create_home: true
