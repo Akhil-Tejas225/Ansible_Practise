@@ -23,7 +23,7 @@
 
     - name: download_tomcat
       ansible.builtin.get_url:
-       url: https://downloads.apache.org/tomcat/tomcat-10/v10.1.40/bin/apache-tomcat-10.1.40.tar.gz
+       url: https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.41/bin/apache-tomcat-10.1.41.tar.gz
        dest: "/tmp/apache-tomcat-10.1.40.tar.gz"
        
   
