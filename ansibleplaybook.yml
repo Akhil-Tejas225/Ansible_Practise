@@ -1,31 +1,30 @@
 ---
 - name: ubuntu
-  hosts: all
+  hosts: ubuntu
   become: yes
   tasks:
     - name: install_open_jdk
       ansible.builtin.apt:
-       name: openjdk-17-jdk
+       name: {{ openjdk-17-jdk }}
        state: present
        update_cache: yes
     - name: create_group_tomcat
       ansible.builtin.group:
-       name: tomcat
+       name: {{ group_name }}
        state: present
        
     - name: add_user_tomcat
       ansible.builtin.user:
-       name: tomcat
+       name: {{ user_name }}
        create_home: true
-       home : /opt/tomcat
+       home : {{ home_dir }}
        shell : /bin/false
        state: present
 
     - name: download_tomcat
       ansible.builtin.get_url:
-       url: https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.41/bin/apache-tomcat-10.1.41.tar.gz
-       dest: "/tmp/apache-tomcat-10.1.41.tar.gz"
-       
+       url: {{ download_url }}
+       dest: {{ /tmp/apache-tomcat-10.1.41.tar.gz }}
   
   
   
