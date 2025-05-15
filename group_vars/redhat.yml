@@ -1,0 +1,6 @@
+java_package: java-17-openjdk
+group_name: tomcat
+user_name: tomcat
+home_dir: /opt/tomcat
+download_url: https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.41/bin/apache-tomcat-10.1.41.tar.gz
+dest_loc: /tmp/apache-tomcat-10.1.41.tar.gz
