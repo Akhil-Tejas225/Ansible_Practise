@@ -1,0 +1,27 @@
+---
+- name: redhat
+  hosts: redhat
+  become: yes
+  tasks:
+    - name: install_open_jdk
+      ansible.builtin.apt:
+       name: "{{ java_package }}"
+       state: present
+       update_cache: yes
+    - name: create_group_tomcat
+      ansible.builtin.group:
+       name: "{{ group_name }}"
+       state: present
+       
+    - name: add_user_tomcat
+      ansible.builtin.user:
+       name: "{{ user_name }}"
+       create_home: true
+       home : "{{ home_dir }}"
+       shell : /bin/false
+       state: present
+
+    - name: download_tomcat
+      ansible.builtin.get_url:
+       url: "{{ download_url }}"
+       dest: "{{ dest_loc }}"
