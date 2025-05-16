@@ -4,7 +4,7 @@
   become: yes
   tasks:
     - name: install_open_jdk
-      ansible.builtin.dnf:
+      ansible.builtin.yum:
        name: "{{ java_package }}"
        state: present
        update_cache: yes
