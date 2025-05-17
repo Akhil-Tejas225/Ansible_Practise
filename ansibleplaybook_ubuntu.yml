@@ -43,7 +43,7 @@
        owner: "{{ user_name }}"
        group: "{{ group_name }}"
     - name: "give execute permissions"
-      ansible.builtin.shell :
+      ansible.builtin.shell:
       cmd: "chmod +x /opt/tomcat/updated/bin/*.sh"
       
 
