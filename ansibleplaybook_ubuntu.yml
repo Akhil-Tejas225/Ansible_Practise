@@ -30,6 +30,24 @@
        remote_src: true
        src :  "{{ dest_loc }}"
        dest:  "{{ tomcat_path }}"
+    - name: Create_symlink
+      ansible.builtin.file:
+       src: "{{ tomcat_path }}"
+       dest: "{{ tomcat_path }}/latest"
+       owner: "{{ user_name }}"
+       group: "{{ group_name }}"
+       state: link
+    - name: "change ownership"
+      ansible.builtin.file:
+       path: "{{ tomcat_path }}/*"
+       owner: "{{ user_name }}"
+       group: "{{ group_name }}"
+       
+
+
+    
+
+        
        
 
 
