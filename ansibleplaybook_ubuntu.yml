@@ -39,7 +39,7 @@
        state: link
     - name: "change ownership"
       ansible.builtin.file:
-       path: "{{ tomcat_path }}/*"
+       path: "{{ tomcat_path }}/latest"
        owner: "{{ user_name }}"
        group: "{{ group_name }}"
        
