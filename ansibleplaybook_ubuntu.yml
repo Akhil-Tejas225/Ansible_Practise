@@ -27,10 +27,9 @@
        dest: "{{ dest_loc }}"
     - nanme: unzip
       ansible.builtin.unarchive:
-       remote_src: true
        src :  "{{ dest_loc }}"
        dest:  "{{ tomcat_path }}"
-       
+
 
 
 
