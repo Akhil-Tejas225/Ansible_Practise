@@ -33,7 +33,7 @@
     - name: Create_symlink
       ansible.builtin.file:
        src: "{{ tomcat_path }}"
-       dest: "{{ tomcat_path }}/latest"
+       dest: "{{ tomcat_symlink }}"
        owner: "{{ user_name }}"
        group: "{{ group_name }}"
        state: link
