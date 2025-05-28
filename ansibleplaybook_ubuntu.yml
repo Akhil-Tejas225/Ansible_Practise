@@ -45,7 +45,7 @@
        group: "{{ group_name }}"
     - name: "give execute permissions"
       ansible.builtin.shell:
-       cmd: "chmod +x /opt/tomcat/bin/*.sh"
+       cmd: "chmod +x /opt/tomcat/apache-tomcat-10.1.41/bin/*.sh"
        executable: "/bin/bash"
       
 
