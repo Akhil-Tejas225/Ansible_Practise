@@ -30,6 +30,8 @@
        remote_src: true
        src :  "{{ dest_loc }}"
        dest:  "{{ home_dir }}"
+       owner: "{{ user_name }}"
+       group: "{{ group_name }}"
     - name: Create_symlink
       ansible.builtin.file:
        src: "{{ home_dir }}"
