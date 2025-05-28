@@ -29,10 +29,10 @@
       ansible.builtin.unarchive:
        remote_src: true
        src :  "{{ dest_loc }}"
-       dest:  "{{ tomcat_path }}"
+       dest:  "{{ home_dir }}"
     - name: Create_symlink
       ansible.builtin.file:
-       src: "{{ tomcat_path }}"
+       src: "{{ home_dir }}"
        dest: "{{ tomcat_symlink }}"
        owner: "{{ user_name }}"
        group: "{{ group_name }}"
@@ -45,7 +45,7 @@
        group: "{{ group_name }}"
     - name: "give execute permissions"
       ansible.builtin.shell:
-       cmd: "chmod +x /opt/tomcat/updated/bin/*.sh"
+       cmd: "chmod +x /opt/tomcat/latest/bin/*.sh"
        executable: "/bin/bash"
       
 
