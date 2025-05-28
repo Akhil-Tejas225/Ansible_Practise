@@ -40,7 +40,7 @@
     - name: "change ownership"
       ansible.builtin.file:
        path: "{{ tomcat_path }}"
-      #  recurse: yes
+       recurse: yes
        owner: "{{ user_name }}"
        group: "{{ group_name }}"
     - name: "give execute permissions"
