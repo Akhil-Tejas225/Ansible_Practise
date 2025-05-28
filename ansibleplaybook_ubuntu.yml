@@ -43,7 +43,6 @@
        recurse: yes
        owner: "{{ user_name }}"
        group: "{{ group_name }}"
-       state: directory
     - name: "give execute permissions"
       ansible.builtin.shell:
        cmd: "chmod +x /opt/tomcat/updated/bin/*.sh"
