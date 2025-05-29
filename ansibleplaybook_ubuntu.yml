@@ -68,7 +68,6 @@
        dest: "{{ home_dir }}/apache-tomcat-10.1.41/webapps/manager/META-INF/context.xml"
     - name: Make sure a service unit is running
       ansible.builtin.systemd:
-       enabled: true
        state: restarted
        name: tomcat.service
     
