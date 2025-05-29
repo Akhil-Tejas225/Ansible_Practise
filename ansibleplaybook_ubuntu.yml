@@ -53,7 +53,11 @@
       ansible.builtin.copy:
        src: ~/Ansible_Practise/tomcat.service
        dest: /etc/systemd/system/tomcat.service
-
+    - name: Make sure a service unit is running
+      ansible.builtin.systemd_service:
+       enabled: true
+       state: started
+       name: tomcat.service
 
     
 
