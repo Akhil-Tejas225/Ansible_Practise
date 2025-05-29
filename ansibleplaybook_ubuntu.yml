@@ -49,7 +49,10 @@
       ansible.builtin.shell:
        cmd: "chmod +x /opt/tomcat/apache-tomcat-10.1.41/bin/*.sh"
        executable: "/bin/bash"
-      
+    - name: copy tomcat.service file
+      ansible.builtin.copy:
+      src: ~/Ansible_Practise/tomcat.service
+      dest: /etc/systemd/system/tomcat.service
 
 
     
