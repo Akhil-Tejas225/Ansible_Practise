@@ -58,6 +58,9 @@
        enabled: true
        state: started
        name: tomcat.service
+    - ansible.builtin.copy:
+       src: "{{ home_dir }}/apache-tomcat-10.1.41/conf/tomcat-users.xml"
+       dest: /etc/systemd/system/tomcat.service
 
     
 
