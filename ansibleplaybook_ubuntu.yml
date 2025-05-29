@@ -62,6 +62,10 @@
       ansible.builtin.copy:
        src: ~/Ansible_Practise/tomcat-users.xml
        dest: "{{ home_dir }}/apache-tomcat-10.1.41/conf/tomcat-users.xml"
+    - name: copy tomcat-context.xml
+      ansible.builtin.copy:
+       src: ~/Ansible_Practise/tomcat-context.xml
+       dest: "{{ home_dir }}/apache-tomcat-10.1.41/webapps/manager/META-INF/context.xml"
 
     
 
