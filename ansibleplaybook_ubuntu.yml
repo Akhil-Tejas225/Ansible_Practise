@@ -60,7 +60,7 @@
        name: tomcat.service
     - name: copy tomcat-user.xml
       ansible.builtin.copy:
-       src: "{{ home_dir }}/apache-tomcat-10.1.41/conf/tomcat-users.xml"
+       src: ~/Ansible_Practise/tomcat-users.xml
        dest: "{{ home_dir }}/apache-tomcat-10.1.41/conf/tomcat-users.xml"
 
     
