@@ -40,7 +40,10 @@
        path: "{{ home_dir }}"
        owner: "{{ user_name }}"
        group: "{{ group_name }}"
-
+    - name: give execute Permissions
+      ansible.builtin.shell:
+       cmd: 'chmod +x {{ home_dir }}/apache-tomcat-{{ download_Version }}/bin/*.sh'
+       executable: "/bin/bash"
       
 
 
