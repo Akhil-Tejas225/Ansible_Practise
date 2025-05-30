@@ -12,7 +12,7 @@
       ansible.builtin.group:
         name: "{{ group_name }}"
         state: present       
-    - name: install openjdk-17-jdk
+    - name: create user tomcat
       ansible.builtin.user:
        name: "{{ user_name }}"
        state: present
