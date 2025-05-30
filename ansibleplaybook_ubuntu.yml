@@ -64,7 +64,7 @@
     - name: copy context hostManager-contextfile
       ansible.builtin.copy:
        src: ~/Ansible_Practise/hostmanager-context.xml
-       dest: "{{ home_dir }}/apache-tomcat-{{ download_Version }}/webapps/hostmanager/META-INF/context.xml"
+       dest: "{{ home_dir }}/apache-tomcat-{{ download_Version }}/webapps/host-manager/META-INF/context.xml"
 
 
      
