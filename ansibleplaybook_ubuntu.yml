@@ -33,7 +33,15 @@
         state: link
         src: "{{ home_dir }}"
         dest: "{{ tomcat_symlink }}"
-        
+    - name: change ownership
+      ansible.builtin.file:
+       state: directory
+       recurse: yes 
+       path: "{{ home_dir }}"
+       owner: "{{ user_name }}"
+       group: "{{ group_name }}"
+
+      
 
 
 
