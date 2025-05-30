@@ -28,7 +28,7 @@
       ansible.builtin.unarchive:
         src: "{{ download_path }}"
         dest: "{{ home_dir }}"
-        owner: "{{ user_name }}"
+
         
     
      
