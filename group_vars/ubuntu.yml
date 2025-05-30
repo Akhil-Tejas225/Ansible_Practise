@@ -5,3 +5,4 @@ home_dir: /opt/tomcat
 download_Version: 10.1.41
 download_path: /tmp
 tomcat_symlink: /opt/latest
+default_shell: /bin/false

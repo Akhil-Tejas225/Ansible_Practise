@@ -18,7 +18,7 @@
        state: present
        home: "{{ home_dir }}"
        group: "{{ group_name }}"
-       shell: /bin/false
+       shell: "{{ default_shell }}"
     - name: download_tomcat
       ansible.builtin.get_url:
         url: "https://downloads.apache.org/tomcat/tomcat-10/v{{ download_Version }}/bin/apache-tomcat-{{ download_Version }}.tar.gz"
