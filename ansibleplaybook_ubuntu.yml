@@ -8,7 +8,25 @@
        name: "{{ java_package }}"
        state: present
        update_cache: yes
-    
+    - name: create_group_tomcat
+      ansible.builtin.group:
+        name: "{{ group_name }}"
+        state: present       
+    - name: install openjdk-17-jdk
+      ansible.builtin.user:
+       name: "{{ user_name }}"
+       state: present
+       home: "{{ home_dir }}"
+       group: "{{ group_name }}"
+
+     
+     
+     
+     
+      # ansible.builtin.get_url :
+      #  name: "{{ java_package }}"
+      #  state: present
+      #  update_cache: yes
     
 
         
