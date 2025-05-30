@@ -3,6 +3,5 @@ group_name: tomcat
 user_name: tomcat
 home_dir: /opt/tomcat
 download_Version: 10.1.41
-dest_loc: /tmp/apache-tomcat-10.1.41.tar.gz
 download_path: /tmp
 tomcat_symlink: /opt/latest

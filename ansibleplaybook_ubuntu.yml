@@ -28,7 +28,14 @@
       ansible.builtin.unarchive:
         src: "{{ download_path }}/apache-tomcat-{{ download_Version }}.tar.gz"
         dest: "{{ home_dir }}"
-     
+    - name: Create Sym-link
+      ansible.builtin.file:
+        state: link
+        src: "{{ home_dir }}"
+        dest: "{{ tomcat_symlink }}"
+        
+
+
 
         
     
