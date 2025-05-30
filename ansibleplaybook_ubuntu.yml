@@ -21,14 +21,14 @@
        shell: /bin/false
     - name: download_tomcat
       ansible.builtin.get_url:
-        url: "https://downloads.apache.org/tomcat/tomcat-10/{{ download_Version }}/bin/apache-tomcat-{{ download_Version }}.tar.gz"
+        url: "https://downloads.apache.org/tomcat/tomcat-10/v{{ download_Version }}/bin/apache-tomcat-{{ download_Version }}.tar.gz"
         dest: "{{ download_path }}"
         owner: "{{ user_name }}"
     - name: unarchieve
       ansible.builtin.unarchive:
         src: "{{ download_path }}/apache-tomcat-{{ download_Version }}.tar.gz"
         dest: "{{ home_dir }}"
-    - 
+     
 
         
     
