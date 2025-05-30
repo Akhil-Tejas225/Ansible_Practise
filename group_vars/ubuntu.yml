@@ -4,5 +4,5 @@ user_name: tomcat
 home_dir: /opt/tomcat
 download_url: https://downloads.apache.org/tomcat/tomcat-10/v10.1.41/bin/apache-tomcat-10.1.41.tar.gz
 dest_loc: /tmp/apache-tomcat-10.1.41.tar.gz
-download_path: /tmp/
+download_path: /tmp
 tomcat_symlink: /opt/latest
