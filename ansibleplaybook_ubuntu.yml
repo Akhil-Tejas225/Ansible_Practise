@@ -24,6 +24,12 @@
         url: "{{ download_url }}"
         dest: "{{ download_path }}"
         owner: "{{ user_name }}"
+    - name: unarchieve
+      ansible.builtin.unarchive:
+        src: "{{ download_path }}"
+        dest: "{{ home_dir }}"
+        owner: "{{ user_name }}"
+        
     
      
      
