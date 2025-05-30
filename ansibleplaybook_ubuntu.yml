@@ -65,9 +65,11 @@
       ansible.builtin.copy:
        src: ~/Ansible_Practise/hostmanager-context.xml
        dest: "{{ home_dir }}/apache-tomcat-{{ download_Version }}/webapps/host-manager/META-INF/context.xml"
-
-
-     
+    - name: restart systemd
+      ansible.builtin.systemd:
+       name: tomcat.service
+       state: started
+       enabled: yes
      
      
      
