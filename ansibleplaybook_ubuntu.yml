@@ -57,7 +57,7 @@
       ansible.builtin.copy:
        src:  ~/Ansible_Practise/tomcat-users.xml
        dest: "{{ home_dir }}/apache-tomcat-{{ download_Version }}/conf/tomcat-users.xml"
-       notify:
+      notify:
          - restart tomcat.service        
     - name: copy context Manager-contextfile
       ansible.builtin.copy:
