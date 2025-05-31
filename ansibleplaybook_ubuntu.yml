@@ -62,24 +62,16 @@
        name: tomcat.service
        state: started
        enabled: yes
-    - name: copy tomcat-users.yml
+    - name: copy files
       ansible.builtin.copy:
-       src:  ~/Ansible_Practise/tomcat-users.xml
-       dest: "{{ home_dir }}/apache-tomcat-{{ download_Version }}/conf/tomcat-users.xml"
+       src: "{{ item.src }}" 
+       dest: "{{ item.dest }}"
+      loop:
+        - {  src: ~/Ansible_Practise/tomcat-users.xml, dest: "{{ home_dir }}/apache-tomcat-{{ download_Version }}/conf/tomcat-users.xml" }
+        - {  src: ~/Ansible_Practise/manager-context.xml, dest: "{{ home_dir }}/apache-tomcat-{{ download_Version }}/webapps/manager/META-INF/context.xml" }
+        - {  src: ~/Ansible_Practise/hostmanager-context.xml, dest: "{{ home_dir }}/apache-tomcat-{{ download_Version }}/webapps/host-manager/META-INF/context.xml" }
       notify:
-         - restart tomcat.service        
-    - name: copy context Manager-contextfile
-      ansible.builtin.copy:
-       src: ~/Ansible_Practise/manager-context.xml
-       dest: "{{ home_dir }}/apache-tomcat-{{ download_Version }}/webapps/manager/META-INF/context.xml"
-      notify:
-        - restart tomcat.service 
-    - name: copy context hostManager-contextfile
-      ansible.builtin.copy:
-       src: ~/Ansible_Practise/hostmanager-context.xml
-       dest: "{{ home_dir }}/apache-tomcat-{{ download_Version }}/webapps/host-manager/META-INF/context.xml"
-      notify:
-        - restart tomcat.service 
+         - restart tomcat.service
     # - name: restart systemd
     #   ansible.builtin.systemd:
     #    name: tomcat.service
