@@ -27,10 +27,11 @@
     - name: check before extract
       ansible.builtin.stat:
         path: "{{ home_dir }}"
-      register: print_stats
+      register: check_tomcatfolder_exists
     - name: Display all variables/facts known for a host
       ansible.builtin.debug:
-          var: print_stats.stat.exists
+          var: check_tomcatfolder_exists.stat.exists
+      when: check_tomcatfolder_exists.stat.exists == false
     - name: unarchieve
       ansible.builtin.unarchive:
         src: "{{ download_path }}/apache-tomcat-{{ download_Version }}.tar.gz"
