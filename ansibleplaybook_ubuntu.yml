@@ -31,15 +31,18 @@
         url: "https://downloads.apache.org/tomcat/tomcat-10/v{{ download_Version }}/bin/apache-tomcat-{{ download_Version }}.tar.gz"
         dest: "{{ download_path }}"
         owner: "{{ user_name }}"
+      when: not check_tomcatfolder_exists.stat.exists
     - name: unarchieve
       ansible.builtin.unarchive:
         src: "{{ download_path }}/apache-tomcat-{{ download_Version }}.tar.gz"
         dest: "{{ home_dir }}"
+      when: not check_tomcatfolder_exists.stat.exists
     - name: Create Sym-link
       ansible.builtin.file:
         state: link
         src: "{{ home_dir }}"
         dest: "{{ tomcat_symlink }}"
+      when: not check_tomcatfolder_exists.stat.exists
     - name: change ownership
       ansible.builtin.file:
        state: directory
