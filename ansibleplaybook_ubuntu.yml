@@ -24,11 +24,17 @@
         url: "https://downloads.apache.org/tomcat/tomcat-10/v{{ download_Version }}/bin/apache-tomcat-{{ download_Version }}.tar.gz"
         dest: "{{ download_path }}"
         owner: "{{ user_name }}"
+    - name: check before extract
+      ansible.builtin.stat:
+        path: "{{ home_dir }}"
+        register: sym
+    - name: Display all variables/facts known for a host
+      ansible.builtin.debug:
+          var: sym  
     - name: unarchieve
       ansible.builtin.unarchive:
         src: "{{ download_path }}/apache-tomcat-{{ download_Version }}.tar.gz"
         dest: "{{ home_dir }}"
-        owner: "{{ user_name }}"
     - name: Create Sym-link
       ansible.builtin.file:
         state: link
