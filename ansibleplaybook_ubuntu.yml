@@ -29,7 +29,7 @@
         path: "{{ home_dir }}"
       register: check_tomcatfolder_exists
     - name: Display all variables/facts known for a host
-      ansible.builtin.debug:
+      debug:
           var: check_tomcatfolder_exists.stat.exists
       when: check_tomcatfolder_exists.stat.exists == false
       notify:
