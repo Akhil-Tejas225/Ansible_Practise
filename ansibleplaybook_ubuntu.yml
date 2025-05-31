@@ -5,7 +5,7 @@
   tasks:
     - name: is it running on ubuntu
       ansible.builtin.fail:
-        msg: "This runs only on ubuntu distrubutions"
+        msg: "This runs only on ubuntu distributions"
       when: ansible_facts[ 'ditrubution' ] !=ubuntu
     - name: install openjdk-17-jdk
       ansible.builtin.apt:
