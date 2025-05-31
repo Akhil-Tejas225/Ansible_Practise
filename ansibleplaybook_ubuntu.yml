@@ -30,7 +30,7 @@
       register: print_stats
     - name: Display all variables/facts known for a host
       ansible.builtin.debug:
-          var: print_stats
+          var: print_stats.stat.exists
     - name: unarchieve
       ansible.builtin.unarchive:
         src: "{{ download_path }}/apache-tomcat-{{ download_Version }}.tar.gz"
