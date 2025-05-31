@@ -34,6 +34,7 @@
       when: check_tomcatfolder_exists.stat.exists == false
       notify:
         - unarchieve
+        - give execute Permissions
     - name: Create Sym-link
       ansible.builtin.file:
         state: link
@@ -46,10 +47,6 @@
        path: "{{ home_dir }}"
        owner: "{{ user_name }}"
        group: "{{ group_name }}"
-    - name: give execute Permissions
-      ansible.builtin.shell:
-       cmd: 'chmod +x {{ home_dir }}/apache-tomcat-{{ download_Version }}/bin/*.sh'
-       executable: "/bin/bash"
     - name: create service file
       ansible.builtin.copy:
        src: ~/Ansible_Practise/tomcat.service
@@ -91,7 +88,10 @@
       ansible.builtin.unarchive:
         src: "{{ download_path }}/apache-tomcat-{{ download_Version }}.tar.gz"
         dest: "{{ home_dir }}"
-     
+    - name: give execute Permissions
+      ansible.builtin.shell:
+       cmd: 'chmod +x {{ home_dir }}/apache-tomcat-{{ download_Version }}/bin/*.sh'
+       executable: "/bin/bash" 
     
     
 
