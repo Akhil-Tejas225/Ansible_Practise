@@ -28,6 +28,7 @@
       ansible.builtin.unarchive:
         src: "{{ download_path }}/apache-tomcat-{{ download_Version }}.tar.gz"
         dest: "{{ home_dir }}"
+        owner: "{{ user_name }}"
     - name: Create Sym-link
       ansible.builtin.file:
         state: link
@@ -78,7 +79,7 @@
     #    enabled: yes
   handlers:
     - name: restart tomcat.service
-      ansible.builtin.service:
+      ansible.builtin.systemd:
         name: tomcat.service
         state: restarted
      
