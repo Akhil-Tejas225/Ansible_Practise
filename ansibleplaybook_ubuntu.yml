@@ -76,7 +76,7 @@
     #    name: tomcat.service
     #    state: started
     #    enabled: yes
-      handlers:
+  handlers:
     - name: restart tomcat.service
       ansible.builtin.service:
         name: tomcat.service
