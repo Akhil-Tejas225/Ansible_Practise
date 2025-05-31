@@ -32,10 +32,6 @@
       ansible.builtin.debug:
           var: check_tomcatfolder_exists.stat.exists
       when: check_tomcatfolder_exists.stat.exists == false
-    - name: unarchieve
-      ansible.builtin.unarchive:
-        src: "{{ download_path }}/apache-tomcat-{{ download_Version }}.tar.gz"
-        dest: "{{ home_dir }}"
     - name: Create Sym-link
       ansible.builtin.file:
         state: link
@@ -89,6 +85,10 @@
       ansible.builtin.systemd:
         name: tomcat.service
         state: restarted
+    - name: unarchieve
+      ansible.builtin.unarchive:
+        src: "{{ download_path }}/apache-tomcat-{{ download_Version }}.tar.gz"
+        dest: "{{ home_dir }}"
      
     
     
