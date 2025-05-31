@@ -54,8 +54,8 @@
       notify:
         - give execute Permissions
     - name: create service file
-      ansible.builtin.copy:
-       src: ~/Ansible_Practise/tomcat.service
+      ansible.builtin.templete:
+       src: ~/Ansible_Practise/tomcat.service.j2
        dest: /etc/systemd/system/tomcat.service
     - name: restart systemd
       ansible.builtin.systemd:
