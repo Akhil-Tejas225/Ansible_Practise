@@ -19,22 +19,22 @@
        home: "{{ home_dir }}"
        group: "{{ group_name }}"
        shell: "{{ default_shell }}"
-    - name: download_tomcat
-      ansible.builtin.get_url:
-        url: "https://downloads.apache.org/tomcat/tomcat-10/v{{ download_Version }}/bin/apache-tomcat-{{ download_Version }}.tar.gz"
-        dest: "{{ download_path }}"
-        owner: "{{ user_name }}"
     - name: check before extract
       ansible.builtin.stat:
         path: "{{ home_dir }}"
       register: check_tomcatfolder_exists
     - name: Display all variables/facts known for a host
-      debug:
+      ansible.builtin.debug:
           var: check_tomcatfolder_exists.stat.exists
-      when: check_tomcatfolder_exists.stat.exists == false
-      notify:
-        - unarchieve
-        - give execute Permissions
+    - name: download_tomcat
+      ansible.builtin.get_url:
+        url: "https://downloads.apache.org/tomcat/tomcat-10/v{{ download_Version }}/bin/apache-tomcat-{{ download_Version }}.tar.gz"
+        dest: "{{ download_path }}"
+        owner: "{{ user_name }}"
+    - name: unarchieve
+      ansible.builtin.unarchive:
+        src: "{{ download_path }}/apache-tomcat-{{ download_Version }}.tar.gz"
+        dest: "{{ home_dir }}"
     - name: Create Sym-link
       ansible.builtin.file:
         state: link
@@ -47,6 +47,9 @@
        path: "{{ home_dir }}"
        owner: "{{ user_name }}"
        group: "{{ group_name }}"
+      when: not check_tomcatfolder_exists.stat.exists
+      notify:
+        - give execute Permissions
     - name: create service file
       ansible.builtin.copy:
        src: ~/Ansible_Practise/tomcat.service
@@ -84,14 +87,10 @@
       ansible.builtin.systemd:
         name: tomcat.service
         state: restarted
-    - name: unarchieve
-      ansible.builtin.unarchive:
-        src: "{{ download_path }}/apache-tomcat-{{ download_Version }}.tar.gz"
-        dest: "{{ home_dir }}"
     - name: give execute Permissions
       ansible.builtin.shell:
        cmd: 'chmod +x {{ home_dir }}/apache-tomcat-{{ download_Version }}/bin/*.sh'
-       executable: "/bin/bash" 
+       executable: "/bin/bash"  
     
     
 
