@@ -67,7 +67,7 @@
        src: "{{ item.src }}" 
        dest: "{{ item.dest }}"
       loop:
-        - {  src: ~/Ansible_Practise/tomcat-users.xml, dest: "{{ home_dir }}/apache-tomcat-{{ download_Version }}/conf/tomcat-users.xml" }
+        - {  src: ~/Ansible_Practise/tomcat-users.xml.j2, dest: "{{ home_dir }}/apache-tomcat-{{ download_Version }}/conf/tomcat-users.xml" }
         - {  src: ~/Ansible_Practise/manager-context.xml, dest: "{{ home_dir }}/apache-tomcat-{{ download_Version }}/webapps/manager/META-INF/context.xml" }
         - {  src: ~/Ansible_Practise/hostmanager-context.xml, dest: "{{ home_dir }}/apache-tomcat-{{ download_Version }}/webapps/host-manager/META-INF/context.xml" }
       notify:
