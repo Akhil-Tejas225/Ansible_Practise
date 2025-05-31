@@ -32,6 +32,8 @@
       ansible.builtin.debug:
           var: check_tomcatfolder_exists.stat.exists
       when: check_tomcatfolder_exists.stat.exists == false
+      notify:
+        - unarchieve
     - name: Create Sym-link
       ansible.builtin.file:
         state: link
